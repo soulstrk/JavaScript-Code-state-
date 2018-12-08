@@ -1,0 +1,83 @@
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    
+
+</body>
+
+<script>
+    // var이 붙어 있지않으면 전역 변수
+    (function(){
+        function a (){
+        var i = 0;
+        }
+
+        //let을 쓰면 문제 없이 작동 but var를 사용하면 무한루프..
+        for (let i = 0; i < 10; i++) {
+            a();
+            //console.log(i);
+        }
+        console.log(i===undefined); //true
+        console.log(i==null) //true 
+        console.log(i===null) //false
+        var i; // 호이스팅
+    }());
+
+    /////////////////// 전역변수의 사용 //////////////////
+
+    //누군가가 만들어놓은 오픈소스를 사용할 수 도있고,
+    //다른사람과 협업을 할 수 도있기 떄문에 전역변수 사용은 항상 조심해야 한다.
+    (function(){
+        var MYAPP = {}; // function()을 이용해 익명함수를 만들어 쓰기떄문에, MYAPP은 지역 변수가 된다!
+        MYAPP.calculator = {
+            left : null,
+            right : null
+        }
+        MYAPP.coordinate = {
+            left : null,
+            right : null
+        }
+
+        MYAPP.calculator.left = 10;
+        MYAPP.calculator.right = 20;
+        function sum() {
+            return MYAPP.calculator.left + MYAPP.calculator.right;
+        }
+        document.write(sum());
+    }());
+
+    /////////////////// 유효범위의 대상 (함수) //////////////////
+
+    /*
+        자바스크립트에서는 함수의 중괄호 안에서 변수만이 지역 변수이다!! (중요)
+    */
+
+    /////////////////// 정적 유효범위 //////////////////////
+
+    /*
+
+    */
+    
+    (function (){
+        var i = 5;
+
+        function a() {
+            var i = 10;
+            b();
+        }
+
+        function b() {
+            console.log(i);
+        }
+
+        a();
+    }());
+</script>
+</html>
