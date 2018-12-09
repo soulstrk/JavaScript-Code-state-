@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        내부함수와 외부함수
+        내부함수에서 외부함수의 변수에 접근할 수 있다.
+    */
+    (function () {
+        function outter() {
+            var title = 'coding';
+            function inner() {
+                console.log(title);
+            }
+            inner();
+        }
+    }());
+
+    /*
+        아래에서 외부함수가 return을 만나는 순간 외부함수는 소멸
+        하는 것인데, 그럼에도 불구하고 inner(); 를 호출하면
+        외부함수의 변수 title에 접근이 가능하다.!
+    */
+
+    function outter() {
+        var title = 'coding';
+        return function () {
+            console.log(title);
+        }
+    }
+    inner = outter();
+    inner();
+
+    /*
+        private variable '_'
+    */
+    function factory_movie(title) {
+        return {
+            get_title: function () {
+                return title;
+            },
+            set_title: function (_title) {
+                if (typeof _title === 'string') {
+                    title = _title
+                } else {
+                    alert('문자열을 입력하세요');
+                }
+            }
+        }
+    }
+    ghost = factory_movie('Ghost in the shell');
+    matrix = factory_movie('Matrix');
+
+    ghost.set_title("123");
+
+    /*
+        클로저의 응용과 조심해야하는 실수
+        i는 외부함수의 변수가아니기 때문!!
+        내부함수는 외부함수 변수에 접근할 권한을 가지고 있다.!
+        - 고쳐보기 -
+    */
+
+    var arr = [];
+    for (var i = 0; i < 5; i++) {
+        arr[i] = function (id) {
+            return function () {
+                return id;
+            }
+        }(i);
+    }
+    for (var index in arr) {
+        console.log(arr[index]());
+    }
+
+    /*
+        https://johnresig.com/apps/learn
+    */
+    var num = 10;
+
+    function addNum(myNum) {
+        var num = 10;
+        return num + myNum;
+    }
+
+    num = 15;
+
+    console.assert(addNum(5) == 15, "Add tow numbers together");
+
+    /*
+        예제
+    */
+
+    var counter = function (num) {
+        var x = num;
+        minus = function () { // minus는 전역함수로 전역 스코프에서 접근 가능
+            return --x;
+        }
+        return minus; // x 를 minus로 바꿔야 좋은 코드인 이유
+    }
+
+    var counter1 = counter(10);
+    var counter2 = counter(100);
+    
+</script>
+
+</html>
