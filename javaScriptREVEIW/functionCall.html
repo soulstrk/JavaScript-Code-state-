@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        자바스크립트에서 함수 라고 하는것은 객체를 의미한다.
+        객체는 속성들을 가지고 있고, 그 속성에 값을 가지고 있다면 속성(property)라고 부르고
+        함수를 가지고 있다면, 메서드 라고 부른다.
+    */
+    function sum(arg1, arg2) {
+        return arg1 + arg2;
+    }
+
+    console.log(sum.apply(null, [1, 2]));
+
+    /*
+
+    */
+    o1 = { val1: 1, val2: 2, val3: 3 }
+    o2 = { v1: 10, v2: 50, v3: 100, v4: 25 }
+    function sum() {
+        // var this = o1 이다라는게 암시적으로 들어갔다고 생각!
+        var _sum = 0;
+        for (name in this) {
+            _sum += this[name];
+        }
+        return _sum;
+    }
+    console.log(sum.apply(o1)) // 6 // o1객체에 sum이라는 메서드가 있는것
+    console.log(sum.apply(o2)) // 185
+
+    /*
+        JavaScript에서 객체는 독립적인 존재로 존재하며,
+         apply나 call 메서드를 통해서 다른 객체의 소유물인 것처러 실행할 수 있다.
+
+         일단 인자를 얼마 넣을지 모를때 사용하는 메서드가 apply라고 생각하자
+    */
+
+</script>
+
+</html>

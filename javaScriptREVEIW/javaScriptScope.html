@@ -70,11 +70,14 @@
 
         function a() {
             var i = 10;
-            b();
+            function test(){
+            	console.log(i+"@@");
+            }
+            b(test);
         }
 
-        function b() {
-            console.log(i);
+        function b(func) {
+            func();
         }
 
         a();

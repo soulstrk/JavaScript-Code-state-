@@ -16,5 +16,18 @@
 
         console.log(arr);
     }());
+    
+    (function(){
+    	var a = function(){
+    		console.log('abc');
+    	}
+
+        function b(){
+            console.log('tt');
+        }
+
+        a.apply(null);
+        b.apply(null);
+    }());
 </script>
 </html>
