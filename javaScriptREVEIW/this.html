@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        this는 함수 내에서 함수 호출 맥락을 의미
+    */
+    function func() {
+        if (window === this) {
+            console.log('aaa');
+        }
+    }
+
+    /*
+        메소드의 호출
+        함수안에서 this라는 키워드는 그 함수가 소속되어있는 객체를 가르킨다.
+    */
+
+    var o = {
+        func: function () {
+            if (o === this) {
+                console.log('o === this');
+            }
+        }
+    }
+    o.func();
+
+    /*
+        생성자에서의 this는 그 생성자가 만든 객체를 가르킨다! 꼭 기억
+    */
+    var funcThis = null;
+
+    function Func() {
+        funcThis = this;
+    }
+    var o1 = Func();
+    if (funcThis === window) {
+        console.log('window');
+    }
+
+    var o2 = new Func();
+    if (funcThis === o2) {
+        console.log('o2');
+    }
+
+    /*
+         함수는 객체다.
+         sum 은 객체다.
+         함수리터럴/객체리터럴/배열리터럴 확실한 구체화된 값을 만들 수 있도록 해주는것을 리터럴이라한다. 
+    */
+    function sum(x, y) { return x + y; }
+
+    var sum2 = new Function('x', 'y', 'return x+y;');
+
+    ////////////////////////////////////////////
+
+    var o = {}
+    var p = {}
+    function func() {
+        switch (this) {
+            case o:
+                document.write('o<br />');
+                break;
+            case p:
+                document.write('p<br />');
+                break;
+            case window:
+                document.write('window<br />');
+                break;
+        }
+    }
+    func(); //window
+    func.apply(o); //o
+    func.apply(p); //p
+</script>
+
+</html>

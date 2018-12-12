@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    /*
+        연관되 있는 변수와 메서드를 그루핑하는게 객체
+
+    */
+(function(){
+    var person = function(name){
+        var obj = {
+            name : name,
+            introduce : function(){
+                return 'My name is'+this.name;
+            }
+        }
+        return obj;
+    }
+
+    var person1 = person('egoing');
+    var person2 = person('leez');
+}());    
+
+    /*
+        생성자 와 new
+        자바와 다르게 자바스크립트는
+        함수에 new를 붙이면 객체가 된다.
+    */
+
+(function(){
+    function Person(name){
+        this.name = name;
+        this.introduce = function(){
+            return 'My name is ' + this.name;
+        }
+    }
+    
+    console.log(p);
+}());
+    
+
+    /*
+        전역객체
+    */
+
+    function func(){
+        alert('Hello?');
+    }
+    func();
+    window.func();
+    // window = 객체
+    // func = 속성(메서드)
+
+    var o = {'func':function(){
+        console.log('abc');
+    }}
+</script>
+</html>
