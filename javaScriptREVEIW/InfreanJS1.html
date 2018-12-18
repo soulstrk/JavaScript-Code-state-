@@ -1,0 +1,85 @@
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        일급 함수
+    */
+    var f1 = function (f) { return f(); }
+
+    var result = f1(function () { return 10; });
+    //console.log(result);
+
+    /* add_maker 일급함수와 클로져의 개념이 들어가있는 예제 */
+
+    function add_maker(a) {
+        return function (b) {
+            return a + b;
+        }
+    }
+
+    var add10 = add_maker(10);
+
+    function f4(f1, f2, f3) {
+        return f3(f1() + f2());
+    }
+
+    var result = f4(
+        function () { return 10; },
+        function () { return 20; },
+        function (t) { return t * 10; }
+    );
+
+    /*
+         함수형으로 전환하기
+    */
+    var users = [
+        { id: 1, name: 'ID', age: 36 },
+        { id: 2, name: 'BJ', age: 32 },
+        { id: 3, name: 'JM', age: 32 },
+        { id: 4, name: 'PJ', age: 27 },
+        { id: 5, name: 'HA', age: 25 },
+        { id: 6, name: 'JE', age: 26 },
+        { id: 7, name: 'JI', age: 31 },
+        { id: 8, name: 'MP', age: 23 }
+    ];
+
+    //30세 이상인 users를 거른다.
+    var result1 = _filter(users, function(con){ return con.age < 30 ? true : false; })
+
+    //30세 미만인 users를 거른다.
+    var result = _filter(users, function(con){ return con.age >= 30 ? true : false; })
+
+    //users의 names를 수집한다.
+    var names = [];
+    for (let index = 0; index < temp_users.length; index++) {
+        names.push(temp_users[index].name);
+    }
+    //console.log(names);
+
+    //4. 30세 미만인 users의 ages를 수집한다.
+    var ages = [];
+    for (let index = 0; index < temp_users.length; index++) {
+        names.push(temp_users[index].age);
+    }
+    //console.log(ages);
+
+    //리펙토링 연습해보기
+    function _filter(users, condition) {
+        return users.filter(function (val, i) {
+            if (condition(val)) return false;
+            return true;
+        })
+    }
+</script>
+
+</html>

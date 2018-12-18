@@ -1,0 +1,46 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+/*     function Person(name){
+        this.name = name;
+    }
+
+    Person.prototype.name = null;
+    Person.prototype.introduce = function(){
+        return "My name = "+ this.name;
+    }
+
+    var p1 = new Person("haha");
+    console.log(p1); */
+
+    /*
+        상속을 받는 기본 예제
+    */
+
+    function Person(name){
+        this.name = name;
+    }
+
+    Person.prototype.name = null;
+    Person.prototype.introduce = function(){
+        return "My name = "+ this.name;
+    }
+
+    function Programmer(name){
+        this.name = name;
+    }
+
+    Programmer.prototype = new Person(); // prototype을 이용해서 객체를 상속 받는다.
+    var v1 = new Programmer("haha");
+
+    console.log(v1.introduce());
+</script>
+</html>
