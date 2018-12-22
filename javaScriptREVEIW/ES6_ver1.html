@@ -1,0 +1,40 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 화살표 함수
+    const allowFunction = (a, b) => a+b;
+    console.log(allowFunction(2,2));
+
+    const ifInAllow = (a, b) => {
+        if(3>2){
+            return 3;
+        }
+    }
+
+    let result = ifInAllow();
+    console.log(result);
+
+    // 매개변수의 디폴트값 넣어놓기
+    var defaultValue = (x, y = 'default') =>{
+        console.log(x, y);
+    }
+
+    defaultValue(3);
+
+    //배열앞에 ...를 붙이면 unpacked된 array가 나온다.
+
+    // 객체값 변수에 담기
+    let obj = { people : "인류", animal : "동물" };
+    const { people : testA, animal : testB } = obj;
+    console.log(testA, testB);
+
+</script>
+</html>

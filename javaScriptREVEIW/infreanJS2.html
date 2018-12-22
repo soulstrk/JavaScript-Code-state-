@@ -1,0 +1,23 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        함수가 아니라 메서드라는 얘기는 순수함수가 아니고 메서드는 객체의 상태애따라 결과가 달라지는 특징을 가지고 있다.
+        메서드는 해당 클래스의 인스턴스에서 사용할 수 있다.
+        $('div') 했을 때 가져오는 리스트는 배열같지만 배열이 아니다.
+    */
+        NodeList.prototype.name = "gdgd";
+    console.log(
+        document.querySelectorAll('*').name
+    );
+
+</script>
+</html>
