@@ -1,0 +1,52 @@
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn1">btn1</button>
+    <button id="btn2">btn2</button>
+</body>
+<script>
+    var btn1 = document.getElementById('btn1');
+    btn1.addEventListener('click', function () {
+        window.open();
+    })
+
+    btn2.addEventListener('click', function () {
+        close();
+    })
+
+    /*
+        RegExp
+        /패턴/
+        $는 끝을 뜻한다.
+        ^는 시작을 뜻한다.
+        문자열.search(패턴); // 문자열.match(패턴);
+        패턴.test(문자열); // 패턴.exec(문자열);
+    */
+    var array = ['사자', '과자', '과일', '타자', '타일'];
+    var result = [];
+    array.forEach(function (item) {
+        if (item.match(/자$/)) {
+            result.push(item);
+        }
+    });
+    console.log(result);  // ['사자', '과자', '타자']
+
+    array.forEach((item) => {
+        if(item.match(/^과/)){
+            result = [];
+            result.push(item);
+        }
+    });
+
+    console.log(result);
+
+</script>
+
+</html>
